@@ -6,10 +6,8 @@
 #include <libcups3/cups/cups.h>
 #include <ctype.h>
 
-
-
-const char *username = "bill"; // Replace with your PAM username
-const char *password = "ppp"; // Replace with your PAM password
+//const char *username = "bill"; // Replace with your PAM username
+//const char *password = "ppp"; // Replace with your PAM password
 
 // Function to get the job state string
 //const char *jobStateString(ipp_jstate_t state) {
@@ -102,7 +100,7 @@ int main(int argc, char *argv[]) {
     // 2.a Construct printer URI string
     snprintf(printer_uri_str, sizeof(printer_uri_str), "ipp://%s:%d/ipp/print", uri_hostname, port);
 
-//    // 2.b Set Basic Authentication header
+//    // 2.b Set Basic Authentication header (for PAM AUTH)
 //    char credentials[256];
 //    snprintf(credentials, sizeof(credentials), "%s:%s", username, password);
 //    char *auth_string = base64Encoder(credentials, strlen(credentials)); //httpEncode64(NULL, 0, credentials, strlen(credentials), false); // Base64 encode //<--- broken? well wont work right.
