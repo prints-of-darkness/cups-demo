@@ -92,7 +92,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "  -m <mime_type>: MIME type of the file (e.g., image/jpeg, application/pdf) (required).\n");
         fprintf(stderr, "  -x <xdim>:      X dimension of the media in 1/1000 inch (optional, default is 10160).\n");
         fprintf(stderr, "  -y <ydim>:      Y dimension of the media in 1/1000 inch (optional, default is 2540).\n");
-		fprintf(stderr, "  -t <tracking>: Media Tracking (mark, continuous, gap) (optional, default is mark).\n");
+		fprintf(stderr, "  -t <tracking>:  Media Tracking (mark, continuous, gap) (optional, default is mark).\n");
         fprintf(stderr, "  -U <username>:  Username for authentication (optional).\n");
         fprintf(stderr, "  -P <password>:  Password for authentication (optional).\n");
         fprintf(stderr, "  -a:             Enable authentication (use with -U and -P).\n");
@@ -160,10 +160,10 @@ int main(int argc, char *argv[]) {
     ippDelete(media_col);
     // --- media-col construction complete ---
 
-
     ippAddInteger(request, IPP_TAG_JOB, IPP_TAG_INTEGER, "print-darkness", 100);						// print darkness
     ippAddInteger(request, IPP_TAG_JOB, IPP_TAG_INTEGER, "print-speed", 500);							// print speed
     ippAddString(request, IPP_TAG_JOB, IPP_TAG_KEYWORD, "print-color-mode", NULL, "monochrome"); 		// Request Monochrome Printing:
+    ippAddResolution(request, IPP_TAG_JOB, "printer-resolution", IPP_RES_PER_INCH, 203, 203);
 
     // Send the request and receive the response
     response = cupsDoFileRequest(http, request, "/ipp/print", filename);

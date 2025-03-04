@@ -15,7 +15,7 @@ int main() {
     ipp_t *request = NULL;
     ipp_t *response = NULL;
 
-    // 1. Connect to the printer.  Use httpConnect2 (or httpConnectEncrypt)
+    // 1. Connect to the printer.
     http = httpConnect("matt-linux.local", 8000, NULL, AF_UNSPEC, HTTP_ENCRYPTION_ALWAYS, 1, 30000, NULL);
     if (!http) {
         fprintf(stderr, "Error connecting to printer: %s\n", cupsGetErrorString());
