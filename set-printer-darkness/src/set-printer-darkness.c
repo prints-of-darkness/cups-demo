@@ -33,13 +33,12 @@ int main() {
     ippAddString(request, IPP_TAG_OPERATION, IPP_TAG_LANGUAGE, "attributes-natural-language", NULL, "en-us");
 
     // 4. Add Printer Attribute - printer-location (text) - Correct tags and structure
-    //ippAddInteger(request, IPP_TAG_PRINTER, IPP_TAG_INTEGER, attribute_name, attribute_value);
     ippAddInteger(request, IPP_TAG_PRINTER, IPP_TAG_INTEGER, attribute_name, attribute_value);
 
-    // 6. Send the IPP request.  "/ipp/printer" is the correct path for many setups.
+    // 5. Send the IPP request.  "/ipp/printer" is the correct path for many setups.
     response = cupsDoRequest(http, request, "/ipp/printer");
 
-    // 7. Check the response
+    // 6. Check the response
     if (response) {
         ipp_status_t status = ippGetStatusCode(response);
         if (status >= IPP_STATUS_OK && status <= IPP_STATUS_OK_EVENTS_COMPLETE) { // Check for *any* success code
@@ -54,7 +53,7 @@ int main() {
         fprintf(stderr, "No response from printer: %s\n", cupsGetErrorString());
     }
 
-    // 8. Cleanup
+    // 7. Cleanup
     ippDelete(request);
     httpClose(http);
 
